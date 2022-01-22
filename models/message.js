@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
 module.exports = class Message extends Sequelize.Model {
   static init(sequelize) {
@@ -21,23 +21,23 @@ module.exports = class Message extends Sequelize.Model {
         sequelize,
         timestamps: true,
         underscored: false,
-        modelName: 'Message',
-        tableName: 'messages',
+        modelName: "Message",
+        tableName: "messages",
         paranoid: true,
-        charset: 'utf8',
-        collate: 'utf8_general_ci',
+        charset: "utf8",
+        collate: "utf8_general_ci",
       }
     );
   }
 
   static associate(db) {
     db.Message.belongsTo(db.User, {
-      foreignKey: 'receiver',
-      targetKey: 'id',
+      foreignKey: "receiver",
+      targetKey: "id",
     });
     db.Message.belongsTo(db.Image, {
-      foreignKey: 'img',
-      targetKey: 'id',
+      foreignKey: "img",
+      targetKey: "id",
     });
   }
 };

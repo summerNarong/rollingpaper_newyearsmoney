@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
 module.exports = class Image extends Sequelize.Model {
   static init(sequelize) {
@@ -6,7 +6,7 @@ module.exports = class Image extends Sequelize.Model {
       {
         imageName: {
           type: Sequelize.STRING(40),
-          allowNull: true,
+          allowNull: false,
         },
         address: {
           type: Sequelize.STRING(100),
@@ -18,19 +18,19 @@ module.exports = class Image extends Sequelize.Model {
         sequelize,
         timestamps: true,
         underscored: false,
-        modelName: 'Image',
-        tableName: 'images',
+        modelName: "Image",
+        tableName: "images",
         paranoid: true,
-        charset: 'utf8',
-        collate: 'utf8_general_ci',
+        charset: "utf8",
+        collate: "utf8_general_ci",
       }
     );
   }
 
   static associate(db) {
     db.Image.hasMany(db.Message, {
-      foreignKey: 'img',
-      sourceKey: 'id',
+      foreignKey: "img",
+      sourceKey: "id",
     });
   }
 };

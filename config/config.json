@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
+    "username": "admin",
+    "password": "11111111",
+    "database": "rollingpaper",
+    "host": "3.37.188.22",
     "dialect": "mysql"
   },
   "test": {

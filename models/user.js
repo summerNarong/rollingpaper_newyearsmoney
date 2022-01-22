@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
 module.exports = class User extends Sequelize.Model {
   static init(sequelize) {
@@ -6,7 +6,7 @@ module.exports = class User extends Sequelize.Model {
       {
         email: {
           type: Sequelize.STRING(40),
-          allowNull: true,
+          allowNull: false,
           unique: true,
         },
         nick: {
@@ -15,30 +15,30 @@ module.exports = class User extends Sequelize.Model {
         },
         password: {
           type: Sequelize.STRING(100),
-          allowNull: true,
+          allowNull: false,
         },
         snsId: {
           type: Sequelize.STRING(30),
-          allowNull: true,
+          allowNull: false,
         },
       },
       {
         sequelize,
         timestamps: true,
         underscored: false,
-        modelName: 'User',
-        tableName: 'users',
+        modelName: "User",
+        tableName: "users",
         paranoid: true,
-        charset: 'utf8',
-        collate: 'utf8_general_ci',
+        charset: "utf8",
+        collate: "utf8_general_ci",
       }
     );
   }
 
   static associate(db) {
     db.User.hasMany(db.Message, {
-      foreignKey: 'receiver',
-      sourceKey: 'id',
+      foreignKey: "receiver",
+      sourceKey: "id",
     });
   }
 };
