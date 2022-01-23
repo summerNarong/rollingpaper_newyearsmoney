@@ -3,7 +3,7 @@
     "username": "admin",
     "password": "11111111",
     "database": "rollingpaper",
-    "host": "3.37.188.22",
+    "host": "summernarong.cyrtle42pfxp.ap-northeast-2.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {

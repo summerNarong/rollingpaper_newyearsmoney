@@ -1,27 +1,28 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const bcrypt = require("bcrypt");
-const passport = require("passport-kakao");
-const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
+const bcrypt = require('bcrypt');
+const passport = require('passport');
+const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 
-router.get("/", (req, res) => {
-  console.log("http://localhost:3001/api/");
-  res.send({ title: "hello react!" });
+router.get('/', (req, res) => {
+  console.log('http://localhost:3001/api/');
+  res.send({ title: 'hello react!' });
 });
 
-router.get("/logout", isLoggedIn, (req, res) => {
+router.get('/logout', isLoggedIn, (req, res) => {
   req.logout();
   req.session.destroy();
-  req.redirect("/");
+  req.redirect('/');
 });
-router.get("/kakao", passport.authenticate("kakao"));
+
+router.get('/kakao', passport.authenticate('kakao'));
 router.get(
-  "/kakao/callback",
-  passport.authenticate("kakao", {
-    failureRedirect: "/",
+  '/kakao/callback',
+  passport.authenticate('kakao', {
+    failureRedirect: '/',
   }),
   (req, res) => {
-    res.redirect("/");
+    res.redirect('/');
   }
 );
 module.exports = router;

@@ -1,11 +1,11 @@
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 
 module.exports = class Image extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        imageName: {
-          type: Sequelize.STRING(40),
+        imagename: {
+          type: Sequelize.STRING(45),
           allowNull: false,
         },
         address: {
@@ -18,19 +18,19 @@ module.exports = class Image extends Sequelize.Model {
         sequelize,
         timestamps: true,
         underscored: false,
-        modelName: "Image",
-        tableName: "images",
+        modelName: 'Image',
+        tableName: 'Image',
         paranoid: true,
-        charset: "utf8",
-        collate: "utf8_general_ci",
+        charset: 'utf8',
+        collate: 'utf8_bin',
       }
     );
   }
 
   static associate(db) {
     db.Image.hasMany(db.Message, {
-      foreignKey: "img",
-      sourceKey: "id",
+      foreignKey: 'imageId',
+      sourceKey: 'id',
     });
   }
 };

@@ -1,17 +1,18 @@
-const passport = require("passport");
-const KakaoStrategy = require("passport-kakao").Strategy;
+const passport = require('passport');
+const KakaoStrategy = require('passport-kakao').Strategy;
 
-const User = require("../models/user");
+const User = require('../../models/user');
 
 module.exports = () => {
   passport.use(
     new KakaoStrategy(
       {
         clientID: process.env.KAKAO_ID,
-        callbackURL: "/auth/kakao/callback",
+        //clientID: '0485ba3fbe59af65f678637c43b175fb',
+        callbackURL: '/api/kakao/callback',
       },
       async (accessToken, refreshToken, profile, done) => {
-        console.log("kakao profile", profile);
+        console.log('kakao profile', profile);
         try {
           const exUser = await User.findOne({
             where: { snsId: profile.id },
