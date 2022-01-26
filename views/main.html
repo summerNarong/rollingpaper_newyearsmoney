@@ -1,12 +1,15 @@
-<a href="http://localhost:3001/auth/kakao"
-  ><img src="/kakaoLogin.png" alt="카카오 로그인"
-/></a>
-<a href="http://localhost:3001/logout"><text>로그아웃</text></a>
+{% include "header.html" %}
+<main>
+  <a href="http://localhost:3001/auth/kakao"
+    ><img src="/kakaoLogin.png" alt="카카오 로그인"
+  /></a>
+  <a href="http://localhost:3001/logout"><text>로그아웃</text></a>
 
-{% if user and user.id%}
+  {% if user and user.id %}
 
-<h2>로그인 된 상태. {{user.nick}}</h2>
-{% else %}
-<h2>로그인 안된 상태.</h2>
+  <h2>로그인 된 상태. {{user.nick}}</h2>
+  {% else %}
+  <h2>로그인 안된 상태.</h2>
 
-{% endif %}
+  {% endif %}
+</main>
