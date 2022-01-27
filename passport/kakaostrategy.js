@@ -1,5 +1,6 @@
 const passport = require('passport');
 const KakaoStrategy = require('passport-kakao').Strategy;
+const shortid = require('shortid');
 
 const User = require('../models/user');
 
@@ -23,6 +24,8 @@ module.exports = () => {
               email: profile._json && profile._json.kakao_account.email,
               nick: profile.displayName,
               snsId: profile.id,
+              asset: 0,
+              ref: shortid.generate(),
             });
             done(null, newUser);
           }
