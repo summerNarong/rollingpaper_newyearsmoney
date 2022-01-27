@@ -1,7 +1,7 @@
-{% include "header.html" %} {% if user and user.id %}
+{% include "header.html" %} {% if user and user.ref %}
 <text>{{user.nick}}님 지갑에는 {{user.asset}}의 세뱃돈이 있습니다.</text>
 {% else %}
-<text>{{user.nick}}님께 세뱃돈과 메세지를 전달해보세요!</text>
+<text>{{hostref.nick}}님께 세뱃돈과 메세지를 전달해보세요!</text>
 {% endif %}
 <div>
   <div style="position: absolute">
@@ -12,7 +12,7 @@
 
   <img src="/piggybank.png" alt="저금통" />
 </div>
-{% if user and user.id %}
+{% if user and user.ref %}
 <a style="cursor: pointer" onclick="copytext()">
   <img src="/kakaoLogin.png" alt="내 저금통 주소 복사하기" />
   <!-- 내 저금통 주소 복사하기 -->
@@ -25,13 +25,13 @@
 {% endif %}
 <script>
   function copytext() {
-    const t = document.createElement("textarea");
+    const t = document.createElement('textarea');
     document.body.appendChild(t);
     url = window.document.location.href;
-    t.value = url; // +고유값
+    t.value = url;
     t.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     document.body.removeChild(t);
-    alert("복사되었습니다.");
+    alert('복사되었습니다.');
   }
 </script>
