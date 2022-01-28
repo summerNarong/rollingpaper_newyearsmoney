@@ -1,6 +1,6 @@
-const express = require('express');
-const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
-const User = require('../models/user');
+const express = require("express");
+const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
+const User = require("../models/user");
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -8,40 +8,44 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get('/', (req, res, next) => {
-  res.render('main', {
-    title: 'hi',
+router.get("/", (req, res, next) => {
+  res.render("main", {
+    title: "hi",
   });
 });
 
-router.get('/logout', isLoggedIn, (req, res) => {
+router.get("/logout", isLoggedIn, (req, res) => {
   req.logout();
   req.session.destroy();
-  res.redirect('/');
+  res.redirect("/");
 });
 
-router.get('/myroom', async (req, res) => {
+router.get("/myroom", async (req, res) => {
   var url = req.url; // /myroom/?ref=...
-  var arr = url.split('='); // [/myroom/?ref, ref값]
+  var arr = url.split("="); // [/myroom/?ref, ref값]
 
   if (arr.length == 1) {
     // /myroom
     if (req.user) {
-      res.redirect('/myroom/?ref=' + req.user.ref);
+      res.redirect("/myroom/?ref=" + req.user.ref);
     } else {
-      res.redirect('/');
+      res.redirect("/");
     }
   } else {
     try {
       const host = await User.findOne({
         where: { ref: arr[1] },
       });
-      res.render('myroom', { hostref: host });
+      res.render("myroom", { hostref: host });
     } catch (error) {
       console.error(error);
       return next(error);
     }
   }
+});
+
+router.get("/sendmsg", (req, res) => {
+  res.render("sendmsg");
 });
 
 module.exports = router;

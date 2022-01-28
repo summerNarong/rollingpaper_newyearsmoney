@@ -18,20 +18,20 @@
   <!-- 내 저금통 주소 복사하기 -->
 </a>
 {% else %}
-<a id="btn_copy" href="/">
+<a id="btn_copy" href="/sendmsg">
   <img src="/kakaoLogin.png" alt="세뱃돈 주기" />
   세뱃돈 주기
 </a>
 {% endif %}
 <script>
   function copytext() {
-    const t = document.createElement('textarea');
+    const t = document.createElement("textarea");
     document.body.appendChild(t);
     url = window.document.location.href;
     t.value = url;
     t.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(t);
-    alert('복사되었습니다.');
+    alert("복사되었습니다.");
   }
 </script>

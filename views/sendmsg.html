@@ -1,0 +1,80 @@
+{% include "header.html" %}
+<!--
+    이미지선택
+    편지쓰는곳(보내는사람, 누구에게, 어쩌구저쩌구)
+    보내기버튼
+
+    yes24 : <li> 로 하나씩 감싸고, 선택하면 <label onclick="chkGiftOpt(this);">  -> 누르면 class="chked"로 바뀜(아마 이걸로 테두리선을 주는듯)
+-->
+
+<style>
+  .img_choice_off {
+    height: 200px;
+    width: 200px;
+    border: 0px;
+  }
+  .img_choice_on {
+    height: 200px;
+    width: 200px;
+    border: 36px solid orange;
+  }
+</style>
+
+<ul calss="ul_supplement">
+  <li class="li_supitem">
+    <input
+      id="10"
+      name="money"
+      type="radio"
+      value="10"
+      onclick="imageSelected()"
+    />
+    <label for="10">
+      <img src="/10.png" class="img_choice_off" />
+    </label>
+  </li>
+  <li class="li_supitem">
+    <input
+      id="100"
+      name="money"
+      type="radio"
+      value="100"
+      onclick="imageSelected()"
+    />
+    <label for="100">
+      <img src="/100.jpg" class="img_choice_off" />
+    </label>
+  </li>
+</ul>
+
+<script>
+  function imageSelected() {
+    const moneyList = document.getElementsByClassName("li_supitem");
+    Array.from(moneyList).forEach((node) => {
+      if (node.getElementsByTagName("input")[0].checked) {
+        var temp_off = node.getElementsByClassName("img_choice_off");
+        if (temp_off.length != 0) {
+          temp_off[0].className = "img_choice_on";
+        }
+      } else {
+        var temp_on = node.getElementsByClassName("img_choice_on");
+        if (temp_on.length != 0) {
+          temp_on[0].className = "img_choice_off";
+        }
+      }
+    });
+  }
+
+  //   const moneyList = document.getElementsByClassName("li_supitem");
+  //     var len = moneyList.length;
+  //     for (var i = 0; i < len; i++) {
+  //       var node = moneyList[i];
+  //       if (node.getElementsByTagName("input")[0].checked) {
+  //         node.getElementsByClassName("img_choice_off")[0].className =
+  //           "img_choice_on";
+  //       } else {
+  //         node.getElementsByClassName("img_choice_on")[0].className =
+  //           "img_choice_off";
+  //       }
+  //     }
+</script>
