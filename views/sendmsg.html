@@ -18,63 +18,64 @@
     width: 200px;
     border: 36px solid orange;
   }
+  .textarea {
+    width: 500px;
+    height: 100px;
+    resize: none;
+  }
 </style>
 
-<ul calss="ul_supplement">
-  <li class="li_supitem">
-    <input
-      id="10"
-      name="money"
-      type="radio"
-      value="10"
-      onclick="imageSelected()"
-    />
-    <label for="10">
-      <img src="/10.png" class="img_choice_off" />
-    </label>
-  </li>
-  <li class="li_supitem">
-    <input
-      id="100"
-      name="money"
-      type="radio"
-      value="100"
-      onclick="imageSelected()"
-    />
-    <label for="100">
-      <img src="/100.jpg" class="img_choice_off" />
-    </label>
-  </li>
-</ul>
+<form action="{{url}}" method="post">
+  <ul calss="ul_supplement">
+    <li class="li_supitem">
+      <input
+        id="10"
+        name="money"
+        type="radio"
+        value="1"
+        onclick="imageSelected()"
+      />
+      <label for="10">
+        <img src="/10.png" class="img_choice_off" />
+      </label>
+    </li>
+    <li class="li_supitem">
+      <input
+        id="100"
+        name="money"
+        type="radio"
+        value="2"
+        onclick="imageSelected()"
+      />
+      <label for="100">
+        <img src="/100.jpg" class="img_choice_off" />
+      </label>
+    </li>
+  </ul>
+
+  <textarea id="msg" name="content" maxlength="500" class="textarea"></textarea>
+  <br />
+  보내는 사람 :
+  <input type="text" id="sender" name="sendername" maxlength="45" required />
+  <br />
+  <button id="msg-btn" type="submit" class="btn">메시지 보내기</button>
+</form>
 
 <script>
   function imageSelected() {
-    const moneyList = document.getElementsByClassName("li_supitem");
+    const moneyList = document.getElementsByClassName('li_supitem');
     Array.from(moneyList).forEach((node) => {
-      if (node.getElementsByTagName("input")[0].checked) {
-        var temp_off = node.getElementsByClassName("img_choice_off");
+      if (node.getElementsByTagName('input')[0].checked) {
+        var temp_off = node.getElementsByClassName('img_choice_off');
         if (temp_off.length != 0) {
-          temp_off[0].className = "img_choice_on";
+          temp_off[0].className = 'img_choice_on';
         }
       } else {
-        var temp_on = node.getElementsByClassName("img_choice_on");
+        var temp_on = node.getElementsByClassName('img_choice_on');
         if (temp_on.length != 0) {
-          temp_on[0].className = "img_choice_off";
+          temp_on[0].className = 'img_choice_off';
         }
       }
     });
   }
-
-  //   const moneyList = document.getElementsByClassName("li_supitem");
-  //     var len = moneyList.length;
-  //     for (var i = 0; i < len; i++) {
-  //       var node = moneyList[i];
-  //       if (node.getElementsByTagName("input")[0].checked) {
-  //         node.getElementsByClassName("img_choice_off")[0].className =
-  //           "img_choice_on";
-  //       } else {
-  //         node.getElementsByClassName("img_choice_on")[0].className =
-  //           "img_choice_off";
-  //       }
-  //     }
 </script>
