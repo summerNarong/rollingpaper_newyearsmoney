@@ -26,13 +26,13 @@
 {% endif %}
 <script>
   function copytext() {
-    const t = document.createElement('textarea');
+    const t = document.createElement("textarea");
     document.body.appendChild(t);
     url = window.document.location.href;
     t.value = url;
     t.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(t);
-    alert('복사되었습니다.');
+    alert("복사되었습니다.");
   }
 </script>
