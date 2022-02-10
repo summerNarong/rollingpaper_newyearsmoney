@@ -1,4 +1,4 @@
-{% include "header.html" %} {% if user and user.ref %}
+{% extends 'layout.html' %} {% block content %} {% if user and user.ref %}
 <text>{{user.nick}}님 지갑에는 {{user.asset}}의 세뱃돈이 있습니다.</text>
 {% else %}
 <text>{{hostuser.nick}}님께 세뱃돈과 메세지를 전달해보세요!</text>
@@ -23,16 +23,17 @@
   <img src="/kakaoLogin.png" alt="세뱃돈 주기" />
   세뱃돈 주기
 </a>
-{% endif %}
+{% endif %} {% endblock %} {% block script %}
 <script>
   function copytext() {
-    const t = document.createElement("textarea");
+    const t = document.createElement('textarea');
     document.body.appendChild(t);
     url = window.document.location.href;
     t.value = url;
     t.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     document.body.removeChild(t);
-    alert("복사되었습니다.");
+    alert('복사되었습니다.');
   }
 </script>
+{% endblock %}

@@ -1,4 +1,4 @@
-{% include "header.html" %}
+{% extends 'layout.html'} {% block content %} {% include "header.html" %}
 <!--
     이미지선택
     편지쓰는곳(보내는사람, 누구에게, 어쩌구저쩌구)
@@ -61,6 +61,7 @@
   <button id="msg-btn" type="submit" class="btn">메시지 보내기</button>
 </form>
 
+{% endblock %} {% block script %}
 <script>
   function imageSelected() {
     const moneyList = document.getElementsByClassName('li_supitem');
@@ -79,3 +80,4 @@
     });
   }
 </script>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>InvestForYourFriend</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/main.css" />
+    <style>
+      body {
+        background-image: url('/background.png');
+        font-family: 'Yeon Sung', cursive;
+        width: 500px;
+        margin: 0 auto;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {% include "header.html" %} {% block content %} {% endblock %}
+
+    <script></script>
+    {% block script %} {% endblock %}
+  </body>
+</html>

@@ -1,15 +1,14 @@
-{% include "header.html" %}
+{% extends 'layout.html' %} {% block content %}
 <main>
-  <a href="http://localhost:3001/auth/kakao"
-    ><img src="/kakaoLogin.png" alt="카카오 로그인"
-  /></a>
-  <a href="http://localhost:3001/logout"><text>로그아웃</text></a>
+  <div id="maintitle">Invest For Your Friend</div>
 
-  {% if user and user.ref %}
-
-  <h2>로그인 된 상태. {{user.nick}}</h2>
-  {% else %}
-  <h2>로그인 안된 상태.</h2>
-
-  {% endif %}
+  <div id="subtitle">당신의 친구에게 투자를 하고 메세지를 남겨보세요!</div>
+  <img style="margin-top: 70px" src="/closedpassbank.png" alt="닫힌 통장" />
+  <div style="margin-top: 80px">
+    <a href="http://localhost:3001/auth/kakao"
+      ><img class="small1" src="/kakaoLogin.png" alt="카카오 로그인"
+    /></a>
+  </div>
 </main>
+
+{% endblock %}

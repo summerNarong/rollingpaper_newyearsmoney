@@ -1,20 +1,44 @@
-<header style="width: 100%; align-items: space-between">
+<header style="width: 100%">
   <style>
-    #align1 {
-      text-align: right;
+    .header {
+      font-size: 34px;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      align-self: center;
     }
     #align2 {
-      text-align: left;
+      margin-right: 200px;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    a:visited {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+    a:focus {
+      text-decoration: none;
+    }
+    a:active {
+      text-decoration: none;
     }
   </style>
-  <div id="align2"><a href="http://localhost:3001/">메인화면</a></div>
-  {% if user and user.ref %}
-  <div id="align1">
-    <a href="http://localhost:3001/logout" id="align1">로그아웃</a>
+  <div class="header">
+    <div id="align2">
+      <a href="http://localhost:3001/">메인화면</a>
+    </div>
+    {% if user and user.ref %}
+    <div id="align1">
+      <a href="http://localhost:3001/logout" id="align1">로그아웃</a>
+    </div>
+    {% else %}
+    <div id="align1">
+      <a href="http://localhost:3001/auth/kakao">로그인</a>
+      {% endif %}
+    </div>
   </div>
-  {% else %}
-  <div id="align1">
-    <a href="http://localhost:3001/auth/kakao">로그인</a>
-  </div>
-  {% endif %}
 </header>
