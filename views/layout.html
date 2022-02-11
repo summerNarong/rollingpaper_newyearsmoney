@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="/main.css" />
     <style>
       body {
-        background-image: url('/background.png');
-        font-family: 'Yeon Sung', cursive;
-        width: 500px;
-        margin: 0 auto;
+        height: 100vh;
+        background-image: url("/background.png");
+        font-family: "Yeon Sung", cursive;
+        width: 400px;
+        margin: auto;
       }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,7 +23,11 @@
     />
   </head>
   <body>
-    {% include "header.html" %} {% block content %} {% endblock %}
+    <div id="app">
+      <div class="wrapper">
+        {% include "header.html" %} {% block content %} {% endblock %}
+      </div>
+    </div>
 
     <script></script>
     {% block script %} {% endblock %}

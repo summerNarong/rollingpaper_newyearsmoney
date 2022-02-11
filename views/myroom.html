@@ -1,39 +1,36 @@
 {% extends 'layout.html' %} {% block content %} {% if user and user.ref %}
-<text>{{user.nick}}님 지갑에는 {{user.asset}}의 세뱃돈이 있습니다.</text>
+<div class="subtitle">
+  <text>{{user.nick}}님 통장에는 {{user.asset}}원이 있습니다.</text>
+</div>
 {% else %}
-<text>{{hostuser.nick}}님께 세뱃돈과 메세지를 전달해보세요!</text>
+<div class="subtitle">
+  <text>{{hostuser.nick}}님께 투자하고 메세지를 전달해보세요!</text>
+</div>
 {% endif %}
 <div>
-  <div style="position: absolute">
-    <div style="position: relative">
-      <img src="/money.jpg" alt="돈" />
-    </div>
-  </div>
-
-  <img src="/piggybank.png" alt="저금통" />
+  <img src="/openedpassbank1.png" alt="저금통" />
 </div>
 {% if user and user.ref %}
 <a style="cursor: pointer" onclick="copytext()">
-  <img src="/kakaoLogin.png" alt="내 저금통 주소 복사하기" />
+  <img style="width: 200px" src="/copy.png" alt="내 저금통 주소 복사하기" />
   <!-- 내 저금통 주소 복사하기 -->
 </a>
 {% else %}
 
-<a id="btn_copy" href="{{url}}">
-  <img src="/kakaoLogin.png" alt="세뱃돈 주기" />
-  세뱃돈 주기
+<a id="btn_godeposit" style="cursor: pointer" href="{{url}}">
+  <img src="/godeposit.png" alt="세뱃돈 주기" />
 </a>
 {% endif %} {% endblock %} {% block script %}
 <script>
   function copytext() {
-    const t = document.createElement('textarea');
+    const t = document.createElement("textarea");
     document.body.appendChild(t);
     url = window.document.location.href;
     t.value = url;
     t.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(t);
-    alert('복사되었습니다.');
+    alert("복사되었습니다.");
   }
 </script>
 {% endblock %}
