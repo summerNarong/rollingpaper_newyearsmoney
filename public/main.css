@@ -15,7 +15,7 @@ div {
   text-align: center;
   margin-top: 20px;
 }
-.small1 {
+.kakaologin {
   width: 180px;
 }
 #app,
@@ -35,3 +35,76 @@ div {
 }
 
 /*myroom.html*/
+
+.swiper {
+  width: 400px;
+  height: 507px;
+  margin: 20px 0;
+}
+
+.swiper-slide {
+  text-align: center;
+}
+
+.slideimg {
+  width: 400px;
+}
+
+/* CSS */
+.button-56 {
+  align-items: center;
+  background-color: #ffe885;
+  border: 2px solid #555347;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  font-family: 'Yeon Sung', cursive;
+  font-size: 20px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-56:after {
+  background-color: #86826b;
+  border-radius: 8px;
+  content: '';
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffe885;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
