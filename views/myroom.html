@@ -11,7 +11,60 @@
 <div style="--swiper-navigation-color: #86826b" class="swiper mySwiper">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-      <img class="slideimg" src="/openedpassbank1.png" />
+      <div class="image-wrap">
+        <img class="slideimg" src="/openedpassbank1.png" />
+        <div class="item-wrap">
+          <div class="profile">
+            <span class="item-name">
+              <text>김예진</text>
+            </span>
+            <span class="item-asset">
+              <text>1,000,000</text>
+            </span>
+            <span class="item-ref">
+              <text>rladPWls</text>
+            </span>
+            <span class="item-date">
+              <text>2021-01-04</text>
+            </span>
+          </div>
+
+          <div class="item-list">
+            <div class="item-no">
+              <text>1</text>
+            </div>
+            <div class="item-sender">
+              <text>김예진</text>
+            </div>
+            <div class="item-deposit">
+              <text>입금</text>
+            </div>
+            <div class="item-price">
+              <text>100,000</text>
+            </div>
+            <div class="item-memo">
+              <text>안녕여름아안녕여름아안녕여름아</text>
+            </div>
+          </div>
+          <div class="item-list">
+            <div class="item-no">
+              <text>2</text>
+            </div>
+            <div class="item-sender">
+              <text>양여름</text>
+            </div>
+            <div class="item-deposit">
+              <text>입금</text>
+            </div>
+            <div class="item-price">
+              <text>100,000</text>
+            </div>
+            <div class="item-memo">
+              <text>안</text>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="swiper-slide">
       <img class="slideimg" src="/openedpassbank2.png" />
@@ -37,24 +90,24 @@
 {% endif %} {% endblock %} {% block script %}
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script>
-  const swiper = new Swiper('.mySwiper', {
+  const swiper = new Swiper(".mySwiper", {
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
     centeredSlides: true,
   });
 </script>
 <script>
   function copytext() {
-    const t = document.createElement('textarea');
+    const t = document.createElement("textarea");
     document.body.appendChild(t);
     url = window.document.location.href;
     t.value = url;
     t.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(t);
-    alert('복사되었습니다.');
+    alert("복사되었습니다.");
   }
 </script>
 {% endblock %}
