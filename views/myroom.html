@@ -8,73 +8,97 @@
   <text>{{hostuser.nick}}님께 투자하고 메세지를 전달해보세요!</text>
 </div>
 {% endif %}
-<div style="--swiper-navigation-color: #86826b" class="swiper mySwiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <div class="image-wrap">
-        <img class="slideimg" src="/openedpassbank1.png" />
-        <div class="item-wrap">
-          <div class="profile">
-            <span class="item-name">
-              <text>김예진</text>
-            </span>
-            <span class="item-asset">
-              <text>1,000,000</text>
-            </span>
-            <span class="item-ref">
-              <text>rladPWls</text>
-            </span>
-            <span class="item-date">
-              <text>2021-01-04</text>
-            </span>
-          </div>
+<div class="carousel">
+  <div style="--swiper-navigation-color: #86826b" class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="image-wrap">
+          <img class="slideimg" src="/openedpassbank1.png" />
+          <div class="item-wrap">
+            <div class="profile">
+              <span class="item-name">
+                <text>김예진</text>
+              </span>
+              <span class="item-asset">
+                <text>1,000,000</text>
+              </span>
+              <span class="item-ref">
+                <text>rladPWls</text>
+              </span>
+              <span class="item-date">
+                <text>2021-01-04</text>
+              </span>
+            </div>
 
-          <div class="item-list">
-            <div class="item-no">
-              <text>1</text>
+            <div class="item-list">
+              <div class="item-no">
+                <text>1</text>
+              </div>
+              <div class="item-sender">
+                <text>김예진</text>
+              </div>
+              <div class="item-deposit">
+                <text>입금</text>
+              </div>
+              <div class="item-price">
+                <text>100,000</text>
+              </div>
+              <div class="item-memo">
+                <button id="show">메세지확인</button>
+              </div>
             </div>
-            <div class="item-sender">
-              <text>김예진</text>
-            </div>
-            <div class="item-deposit">
-              <text>입금</text>
-            </div>
-            <div class="item-price">
-              <text>100,000</text>
-            </div>
-            <div class="item-memo">
-              <text>안녕여름아안녕여름아안녕여름아</text>
-            </div>
-          </div>
-          <div class="item-list">
-            <div class="item-no">
-              <text>2</text>
-            </div>
-            <div class="item-sender">
-              <text>양여름</text>
-            </div>
-            <div class="item-deposit">
-              <text>입금</text>
-            </div>
-            <div class="item-price">
-              <text>100,000</text>
-            </div>
-            <div class="item-memo">
-              <text>안</text>
+            <div class="item-list">
+              <div class="item-no">
+                <text>2</text>
+              </div>
+              <div class="item-sender">
+                <text>양여름</text>
+              </div>
+              <div class="item-deposit">
+                <text>입금</text>
+              </div>
+              <div class="item-price">
+                <text>100,000</text>
+              </div>
+              <div class="item-memo">
+                <text>안</text>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="swiper-slide">
+        <img class="slideimg" src="/openedpassbank2.png" />
+      </div>
     </div>
-    <div class="swiper-slide">
-      <img class="slideimg" src="/openedpassbank2.png" />
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+<div class="background">
+  <div class="window">
+    <div class="popup">
+      <div id="close"></div>
+      <div class="memo-content">
+        <div>
+          내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용
+          내용내용내용내용내용내용내용내용내용내용내용내용
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
 </div>
-
 {% if user and user.ref %}
 <a style="cursor: pointer" onclick="copytext()">
   <button class="button-56" role="button">
@@ -90,24 +114,37 @@
 {% endif %} {% endblock %} {% block script %}
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script>
-  const swiper = new Swiper(".mySwiper", {
+  const swiper = new Swiper('.mySwiper', {
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
     centeredSlides: true,
   });
 </script>
 <script>
   function copytext() {
-    const t = document.createElement("textarea");
+    const t = document.createElement('textarea');
     document.body.appendChild(t);
     url = window.document.location.href;
     t.value = url;
     t.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     document.body.removeChild(t);
-    alert("복사되었습니다.");
+    alert('복사되었습니다.');
   }
+</script>
+
+<script>
+  function show() {
+    document.querySelector('.background').className = 'background show';
+  }
+
+  function close() {
+    document.querySelector('.background').className = 'background';
+  }
+
+  document.querySelector('#show').addEventListener('click', show);
+  document.querySelector('#close').addEventListener('click', close);
 </script>
 {% endblock %}
