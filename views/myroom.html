@@ -1,7 +1,7 @@
 {% extends 'layout.html' %} {% block content %} {% if user and user.ref %}
 
 <div class="subtitle">
-  <text>{{user.nick}}님 통장에는 {{user.asset}}원이 있습니다.</text>
+  <text>{{hostuser.nick}}님 통장에는 {{hostuser.asset}}원이 있습니다.</text>
 </div>
 {% else %}
 <div class="subtitle">
@@ -17,16 +17,16 @@
           <div class="item-wrap">
             <div class="profile">
               <span class="item-name">
-                <text>김예진</text>
+                <text>{{hostuser.nick}}</text>
               </span>
               <span class="item-asset">
-                <text>1,000,000</text>
+                <text>{{hostuser.asset}}</text>
               </span>
               <span class="item-ref">
-                <text>rladPWls</text>
+                <text>{{hostuser.ref}}</text>
               </span>
               <span class="item-date">
-                <text>2021-01-04</text>
+                <text>{{date}}</text>
               </span>
             </div>
 
@@ -35,7 +35,7 @@
                 <text>1</text>
               </div>
               <div class="item-sender">
-                <text>김예진</text>
+                <text></text>
               </div>
               <div class="item-deposit">
                 <text>입금</text>
@@ -81,20 +81,17 @@
     <div class="popup">
       <div id="close"></div>
       <div class="memo-content">
-        <div>
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용
-          내용내용내용내용내용내용내용내용내용내용내용내용
-        </div>
+        내용내용내용내용내용내 용내용내용내용내용내용내용내용내용
+        내용내용내용내용내용내용내용내용내용내용내용내용내용내용내
+        용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내
+        용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+        내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내
+        용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+        내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+        내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+        내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+        내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내
+        용내용내용내용내용내용내용내용내용내용내용내용내용
       </div>
     </div>
   </div>
@@ -108,43 +105,68 @@
 </a>
 {% else %}
 
-<a id="btn_godeposit" style="cursor: pointer" href="{{url}}">
-  <img src="/godeposit.png" alt="세뱃돈 주기" />
+<a style="cursor: pointer" href="{{url}}">
+  <button class="button-56" role="button">
+    <text> 입금하러 가기 </text>
+  </button>
 </a>
+
 {% endif %} {% endblock %} {% block script %}
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script>
-  const swiper = new Swiper('.mySwiper', {
+  const swiper = new Swiper(".mySwiper", {
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
     centeredSlides: true,
   });
 </script>
 <script>
   function copytext() {
-    const t = document.createElement('textarea');
+    const t = document.createElement("textarea");
     document.body.appendChild(t);
     url = window.document.location.href;
     t.value = url;
     t.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(t);
-    alert('복사되었습니다.');
+    alert("복사되었습니다.");
   }
 </script>
 
 <script>
   function show() {
-    document.querySelector('.background').className = 'background show';
+    document.querySelector(".background").className = "background show";
   }
 
   function close() {
-    document.querySelector('.background').className = 'background';
+    document.querySelector(".background").className = "background";
   }
 
-  document.querySelector('#show').addEventListener('click', show);
-  document.querySelector('#close').addEventListener('click', close);
+  document.querySelector("#show").addEventListener("click", show);
+  document.querySelector("#close").addEventListener("click", close);
+
+  window.addEventListener("click", (e) => {
+    e.target.classList.contains("window") ? close() : false;
+  });
+</script>
+<script>
+  //   swiper-slide > image_wrap > slideimg, item-wrap
+  // //일단 첫페이지 프로필은 구현되어있음
+  // item-list에 appendchild
+
+  // item-no
+  // item-sender
+  // item-deposit
+  // item-price
+  // item-memo
+
+  var newDIV = document.createElement("div");
+  newDiv.setAttribute("class", "item-list");
+
+  //부모 변수, 첫 페이지 밑부분 추가
+  const parent = document.getElementByClass("item-wrap");
+  parent.appendChild(newDiv);
 </script>
 {% endblock %}
