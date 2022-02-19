@@ -53,6 +53,17 @@
   text-align: left;
   height: 23px;
 }
+.image-wrap .item-list2 {
+  position: relative;
+  display: flex;
+  left: 12px;
+  top: 13%;
+  color: #000;
+  font-size: 16px;
+  text-align: left;
+  height: 23px;
+}
+
 .image-wrap .item-list .item {
   position: relative;
   justify-content: center;
@@ -115,7 +126,7 @@
   color: #000000;
   cursor: pointer;
   display: flex;
-  font-family: "Yeon Sung", cursive;
+  font-family: 'Yeon Sung', cursive;
   font-size: 20px;
   height: 48px;
   justify-content: center;
@@ -133,7 +144,7 @@
 .button-56:after {
   background-color: #86826b;
   border-radius: 8px;
-  content: "";
+  content: '';
   display: block;
   height: 48px;
   left: 0;
@@ -198,7 +209,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url("/memopad.png");
+  background-image: url('/memopad.png');
   background-size: cover;
   max-width: 500px;
   max-height: 500px;
@@ -238,7 +249,7 @@
 #close:after {
   position: absolute;
 
-  content: " ";
+  content: ' ';
   height: 25px;
   width: 2px;
   background-color: #333;

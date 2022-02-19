@@ -35,7 +35,7 @@
                 <text>1</text>
               </div>
               <div class="item-sender">
-                <text></text>
+                <text>김예</text>
               </div>
               <div class="item-deposit">
                 <text>입금</text>
@@ -68,7 +68,21 @@
         </div>
       </div>
       <div class="swiper-slide">
-        <img class="slideimg" src="/openedpassbank2.png" />
+        <div class="image-wrap">
+          <img class="slideimg" src="/openedpassbank2.png" />
+          <div class="item-wrap">
+            <div class="item-list2">dlkjflsjf</div>
+            <div class="item-list2">dlkjflsjf</div>
+            <div class="item-list2">dlkjflsjf</div>
+            <div class="item-list2">dlkjflsjf</div>
+            <div class="item-list2">dlkjflsjf</div>
+            <div class="item-list2">dlkjflsjf</div>
+            <div class="item-list2">dlkjflsjf</div>
+            <div style="margin-top: 18%" class="item-list2">dlkjflsjf</div>
+            <div class="item-list2">dlkjflsjf</div>
+            <div class="item-list2">dlkjflsjf</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -112,47 +126,38 @@
 </a>
 
 {% endif %} {% endblock %} {% block script %}
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<script>
-  const swiper = new Swiper(".mySwiper", {
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    centeredSlides: true,
-  });
-</script>
+
 <script>
   function copytext() {
-    const t = document.createElement("textarea");
+    const t = document.createElement('textarea');
     document.body.appendChild(t);
     url = window.document.location.href;
     t.value = url;
     t.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     document.body.removeChild(t);
-    alert("복사되었습니다.");
+    alert('복사되었습니다.');
   }
 </script>
 
 <script>
   function show() {
-    document.querySelector(".background").className = "background show";
+    document.querySelector('.background').className = 'background show';
   }
 
   function close() {
-    document.querySelector(".background").className = "background";
+    document.querySelector('.background').className = 'background';
   }
 
-  document.querySelector("#show").addEventListener("click", show);
-  document.querySelector("#close").addEventListener("click", close);
+  document.querySelector('#show').addEventListener('click', show);
+  document.querySelector('#close').addEventListener('click', close);
 
-  window.addEventListener("click", (e) => {
-    e.target.classList.contains("window") ? close() : false;
+  window.addEventListener('click', (e) => {
+    e.target.classList.contains('window') ? close() : false;
   });
 </script>
 <script>
-  //   swiper-slide > image_wrap > slideimg, item-wrap
+  //   swiper-slide > image_wrap > slideimg, item-wrap > (item-list * 2)
   // //일단 첫페이지 프로필은 구현되어있음
   // item-list에 appendchild
 
@@ -161,12 +166,61 @@
   // item-deposit
   // item-price
   // item-memo
+  let parent = document.getElementsByClassName('swiper-wrapper')[0];
+  let swiperslide = document.createElement('div');
+  swiperslide.setAttribute('class', 'swiper-slide');
+  parent.appendChild(swiperslide);
 
-  var newDIV = document.createElement("div");
-  newDiv.setAttribute("class", "item-list");
+  let parent2 = document.getElementsByClassName('swiper-slide')[2];
+  let imagewrap = document.createElement('div');
+  imagewrap.setAttribute('class', 'image-wrap');
+  parent2.appendChild(imagewrap);
 
-  //부모 변수, 첫 페이지 밑부분 추가
-  const parent = document.getElementByClass("item-wrap");
-  parent.appendChild(newDiv);
+  console.log(imagewrap);
+
+  console.log(document.getElementsByClassName('swiper-slide'));
+  let parent3 = document.getElementsByClassName('image-wrap')[2];
+  let slideimg = document.createElement('img');
+  slideimg.setAttribute('src', '/openedpassbank2.png');
+  slideimg.setAttribute('class', 'slideimg');
+  parent3.appendChild(slideimg);
+
+  let itemwrap = document.createElement('div');
+  itemwrap.setAttribute('class', 'item-wrap');
+  parent3.appendChild(itemwrap);
+
+  let itemlist2 = document.createElement('div');
+  itemlist2.setAttribute('class', 'item-list2');
+  itemlist2.innerText = '{{msg[2].sender}}';
+  let a = parent3.lastChild;
+  a.appendChild(itemlist2);
+</script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.mySwiper', {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    centeredSlides: true,
+  });
 </script>
 {% endblock %}
+<!--
+  <div class="item-no">
+    <text>2</text>
+  </div>
+  <div class="item-sender">
+    <text>양여름</text>
+  </div>
+  <div class="item-deposit">
+    <text>입금</text>
+  </div>
+  <div class="item-price">
+    <text>100,000</text>
+  </div>
+  <div class="item-memo">
+    <text>안</text>
+  </div>
+  
+-->
