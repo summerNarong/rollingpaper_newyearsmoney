@@ -129,31 +129,31 @@
 
 <script>
   function copytext() {
-    const t = document.createElement('textarea');
+    const t = document.createElement("textarea");
     document.body.appendChild(t);
     url = window.document.location.href;
     t.value = url;
     t.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(t);
-    alert('복사되었습니다.');
+    alert("복사되었습니다.");
   }
 </script>
 
 <script>
   function show() {
-    document.querySelector('.background').className = 'background show';
+    document.querySelector(".background").className = "background show";
   }
 
   function close() {
-    document.querySelector('.background').className = 'background';
+    document.querySelector(".background").className = "background";
   }
 
-  document.querySelector('#show').addEventListener('click', show);
-  document.querySelector('#close').addEventListener('click', close);
+  document.querySelector("#show").addEventListener("click", show);
+  document.querySelector("#close").addEventListener("click", close);
 
-  window.addEventListener('click', (e) => {
-    e.target.classList.contains('window') ? close() : false;
+  window.addEventListener("click", (e) => {
+    e.target.classList.contains("window") ? close() : false;
   });
 </script>
 <script>
@@ -166,41 +166,67 @@
   // item-deposit
   // item-price
   // item-memo
-  let parent = document.getElementsByClassName('swiper-wrapper')[0];
-  let swiperslide = document.createElement('div');
-  swiperslide.setAttribute('class', 'swiper-slide');
+  let parent = document.getElementsByClassName("swiper-wrapper")[0];
+  let swiperslide = document.createElement("div");
+  swiperslide.setAttribute("class", "swiper-slide");
   parent.appendChild(swiperslide);
 
-  let parent2 = document.getElementsByClassName('swiper-slide')[2];
-  let imagewrap = document.createElement('div');
-  imagewrap.setAttribute('class', 'image-wrap');
+  let parent2 = document.getElementsByClassName("swiper-slide")[2];
+  let imagewrap = document.createElement("div");
+  imagewrap.setAttribute("class", "image-wrap");
   parent2.appendChild(imagewrap);
 
-  console.log(imagewrap);
-
-  console.log(document.getElementsByClassName('swiper-slide'));
-  let parent3 = document.getElementsByClassName('image-wrap')[2];
-  let slideimg = document.createElement('img');
-  slideimg.setAttribute('src', '/openedpassbank2.png');
-  slideimg.setAttribute('class', 'slideimg');
+  let parent3 = document.getElementsByClassName("image-wrap")[2];
+  let slideimg = document.createElement("img");
+  slideimg.setAttribute("src", "/openedpassbank2.png");
+  slideimg.setAttribute("class", "slideimg");
   parent3.appendChild(slideimg);
 
-  let itemwrap = document.createElement('div');
-  itemwrap.setAttribute('class', 'item-wrap');
+  let itemwrap = document.createElement("div");
+  itemwrap.setAttribute("class", "item-wrap");
   parent3.appendChild(itemwrap);
+  let i = 0;
+  for (i = 0; i < 7; i++) {
+    let itemlist2 = document.createElement("div");
+    itemlist2.setAttribute("class", "item-list2");
+    //itemlist2.innerText = '{{msg[2].sender}}';
+    let a = parent3.lastChild;
+    a.appendChild(itemlist2);
 
-  let itemlist2 = document.createElement('div');
-  itemlist2.setAttribute('class', 'item-list2');
-  itemlist2.innerText = '{{msg[2].sender}}';
-  let a = parent3.lastChild;
-  a.appendChild(itemlist2);
+    a = a.lastChild;
+    let itemno = document.createElement("div");
+    itemno.setAttribute("class", "item-no");
+    itemno.innerHTML = i;
+    a.appendChild(itemno);
+
+    let itemsender = document.createElement("div");
+    itemsender.setAttribute("class", "item-sender");
+    let str = "{{msg[" + i + "].sender}}";
+    itemsender.innerHTML = str;
+    a.appendChild(itemsender);
+
+    let itemdeposit = document.createElement("div");
+    itemdeposit.setAttribute("class", "item-deposit");
+    itemdeposit.innerText = "입금";
+    a.appendChild(itemdeposit);
+
+    let itemprice = document.createElement("div");
+    itemprice.setAttribute("class", "item-price");
+    itemprice.innerText = "{{msg[i].Image.price}}";
+    a.appendChild(itemprice);
+
+    let itemmemo = document.createElement("div");
+    itemmemo.setAttribute("class", "item-memo");
+    itemmemo.innerText = "{{msg[i].textmsg}}";
+    a.appendChild(itemmemo);
+  }
 </script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script>
-  const swiper = new Swiper('.mySwiper', {
+  const swiper = new Swiper(".mySwiper", {
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
     centeredSlides: true,
   });
