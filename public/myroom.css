@@ -234,7 +234,7 @@
   overflow: auto;
 }
 
-#close {
+.close {
   position: absolute;
   right: 5%;
   top: 5%;
@@ -242,11 +242,11 @@
   height: 25px;
   opacity: 0.3;
 }
-#close:hover {
+.close:hover {
   opacity: 1;
 }
-#close:before,
-#close:after {
+.close:before,
+.close:after {
   position: absolute;
 
   content: ' ';
@@ -254,9 +254,9 @@
   width: 2px;
   background-color: #333;
 }
-#close:before {
+.close:before {
   transform: rotate(45deg);
 }
-#close:after {
+.close:after {
   transform: rotate(-45deg);
 }
