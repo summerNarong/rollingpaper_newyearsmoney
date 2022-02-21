@@ -156,7 +156,8 @@
     e.target.classList.contains("window") ? close() : false;
   });
 </script>
-<script>
+
+<!-- <script>
   //   swiper-slide > image_wrap > slideimg, item-wrap > (item-list * 2)
   // //일단 첫페이지 프로필은 구현되어있음
   // item-list에 appendchild
@@ -201,8 +202,7 @@
 
     let itemsender = document.createElement("div");
     itemsender.setAttribute("class", "item-sender");
-    let str = "{{msg[" + i + "].sender}}";
-    itemsender.innerHTML = str;
+    itemsender.innerHTML = "{{msg[" + i + "].sender}}";
     a.appendChild(itemsender);
 
     let itemdeposit = document.createElement("div");
@@ -220,7 +220,7 @@
     itemmemo.innerText = "{{msg[i].textmsg}}";
     a.appendChild(itemmemo);
   }
-</script>
+</script> -->
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script>
   const swiper = new Swiper(".mySwiper", {
@@ -231,22 +231,5 @@
     centeredSlides: true,
   });
 </script>
-{% endblock %}
-<!--
-  <div class="item-no">
-    <text>2</text>
-  </div>
-  <div class="item-sender">
-    <text>양여름</text>
-  </div>
-  <div class="item-deposit">
-    <text>입금</text>
-  </div>
-  <div class="item-price">
-    <text>100,000</text>
-  </div>
-  <div class="item-memo">
-    <text>안</text>
-  </div>
-  
--->
+{% endblock %} {% set index = [0,1,2,3,4,5,6] %} {% for i in index %} {% for msg
+in msg %} {% i++%} {% endfor %}
