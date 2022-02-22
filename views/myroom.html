@@ -44,9 +44,12 @@
               <div class="item-price">
                 <text>{{item.Image.price}}</text>
               </div>
-              <div class="item-memo">
-                <button class="showup">{{item.textmsg}}</button>
-              </div>
+              <button class="myBtn_multi">Open Modal</button>
+              <div
+                class="number"
+                style="display: none"
+                value="{{item.textmsg}}"
+              ></div>
             </div>
             {% if loop.index0==6 or loop.last %}
           </div>
@@ -71,9 +74,12 @@
               <div class="item-price">
                 <text>{{item.Image.price}}</text>
               </div>
-              <div class="item-memo">
-                <button class="showup">{{item.textmsg}}</button>
-              </div>
+              <button class="myBtn_multi">Open Modal</button>
+              <div
+                class="number"
+                style="display: none"
+                value="{{item.textmsg}}"
+              ></div>
             </div>
 
             {% elif loop.index0 % 14 == 0 %}
@@ -90,33 +96,35 @@
               <div class="item-price">
                 <text>{{item.Image.price}}</text>
               </div>
-              <div class="item-memo">
-                <button class="showup">{{item.textmsg}}</button>
-              </div>
+
+              <button class="myBtn_multi">Open Modal</button>
+              <div
+                class="number"
+                style="display: none"
+                value="{{item.textmsg}}"
+              ></div>
             </div>
             {% endif %} {% if loop.index0 % 14 == 20 or loop.last%}
           </div>
         </div>
       </div>
 
-      {% endif %} {% endif %}
-
-      <div class="background">
-        <div class="window">
-          <div class="popup">
-            <div class="close"></div>
-            <div class="memo-content">{{item.textmsg}}</div>
-          </div>
-        </div>
-      </div>
-
-      {% endfor %}
+      {% endif %} {% endif %} {% endfor %}
     </div>
 
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
   </div>
 </div>
+
+<!-- The Modal -->
+<div class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">×</span>
+  </div>
+</div>
+
 {% if user and user.ref %}
 <a style="cursor: pointer" onclick="copytext()">
   <button class="button-56" role="button">
@@ -148,35 +156,54 @@
 </script>
 
 <script>
-  var shows = document.getElementsByClassName('showup');
-  var closes = document.getElementsByClassName('close');
-  var backgrounds = document.getElementsByClassName('background');
-  function show() {
-    document.querySelector('.background').className = 'background show';
+  var modal_btn_multi = document.getElementsByClassName('myBtn_multi');
+
+  // Get the <span> element that closes the modal
+  var number_multi = document.getElementsByClassName('number');
+
+  // When the user clicks the button, open the modal
+  function setDataIndex() {
+    for (i = 0; i < modal_btn_multi.length; i++) {
+      modal_btn_multi[i].setAttribute('data-index', i);
+      number_multi[i].setAttribute('data-index', i);
+    }
   }
+
+  for (i = 0; i < modal_btn_multi.length; i++) {
+    modal_btn_multi[i].onclick = function () {
+      var ElementIndex = this.getAttribute('data-index');
+      //modalparent[ElementIndex].style.display = 'block';
+      document.getElementsByClassName('modal')[0].style.display = 'block';
+      let str = number_multi[ElementIndex].getAttribute('value');
+
+      let temp = document.createElement('div');
+      temp.setAttribute('id', 'closesoon');
+      temp.innerHTML = str;
+
+      let modalparent = document.getElementsByClassName('modal-content')[0];
+      modalparent.appendChild(temp);
+    };
+  }
+
+  window.onload = function () {
+    setDataIndex();
+  };
+
+  window.onclick = function (event) {
+    if (event.target === document.getElementsByClassName('modal')[0]) {
+      close();
+    }
+  };
 
   function close() {
-    document.querySelector('.background').className = 'background';
-  }
+    document.getElementsByClassName('modal')[0].style.display = 'none';
 
-  for (var i = 1; i < shows.length; i++) {
-    shows[i].onclick = function (e) {
-      e.preventDefault();
-
-      //shows[2].addEventListener('click', show);
-      var background1 = backgrounds.item(i - 1);
-      background1.className = 'background show';
-    };
+    let modalparent = document.getElementsByClassName('modal-content')[0];
+    modalparent.removeChild(document.getElementById('closesoon'));
   }
-
-  // When the user clicks on <span> (x), close the modal
-  for (var i = 0; i < closes.length; i++) {
-    closes[i].onclick = function () {
-      //closes[2].addEventListener('click', close);
-      backgrounds[i].className = 'background';
-    };
-  }
+  document.querySelector('.close').addEventListener('click', close);
 </script>
+<script></script>
 
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script>
