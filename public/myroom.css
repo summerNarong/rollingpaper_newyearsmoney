@@ -71,28 +71,33 @@
 }
 .item-no {
   position: relative;
-  left: 7px;
+
+  width: 24px;
 }
 .item-sender {
   position: relative;
-  left: 26px;
+
+  width: 105px;
 }
 .item-deposit {
-  left: 95px;
   position: relative;
+  width: 35px;
 }
 .item-price {
-  left: 105px;
   position: relative;
+  width: 120px;
 }
 .item-memo {
-  left: 170px;
+  width: 80px;
   position: relative;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   width: 80px;
   text-align: left;
+  cursor: pointer;
+  text-decoration: underline;
+  text-shadow: 1px 1px #86826b;
 }
 
 .item-name {
@@ -126,7 +131,7 @@
   color: #000000;
   cursor: pointer;
   display: flex;
-  font-family: 'Yeon Sung', cursive;
+  font-family: "Yeon Sung", cursive;
   font-size: 20px;
   height: 48px;
   justify-content: center;
@@ -144,7 +149,7 @@
 .button-56:after {
   background-color: #86826b;
   border-radius: 8px;
-  content: '';
+  content: "";
   display: block;
   height: 48px;
   left: 0;
@@ -175,93 +180,6 @@
   }
 }
 
-/*모달 창*/
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* width: 100vw;
-  height: 100vh;
-  margin-left: calc(-50vw + 50%);
-  margin-top: calc(-50vh + 50%); */
-  background-color: rgba(0, 0, 0, 0.3);
-  /* 숨기기 */
-  z-index: -1;
-  opacity: 0;
-}
-
-.show {
-  opacity: 1;
-  z-index: 1000;
-  transition: all 0.5s;
-}
-
-.window {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.popup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-image: url('/memopad.png');
-  background-size: cover;
-  max-width: 500px;
-  max-height: 500px;
-  min-height: 400px;
-  width: 80%;
-  height: 50%;
-  /* 초기에 약간 아래에 배치 */
-  transform: translate(-50%, -40%);
-}
-
-.show .popup {
-  transform: translate(-50%, -50%);
-  transition: all 0.5s;
-}
-
-.memo-content {
-  position: absolute;
-  top: 20%;
-  height: 73%;
-  margin: 0 30px 0 30px;
-  font-size: 22px;
-  overflow: auto;
-}
-/*
-.close {
-  position: absolute;
-  right: 5%;
-  top: 5%;
-  width: 25px;
-  height: 25px;
-  opacity: 0.3;
-}
-.close:hover {
-  opacity: 1;
-}
-.close:before,
-.close:after {
-  position: absolute;
-
-  content: ' ';
-  height: 25px;
-  width: 2px;
-  background-color: #333;
-}
-.close:before {
-  transform: rotate(45deg);
-}
-.close:after {
-  transform: rotate(-45deg);
-}
-*/
-
 /*modal 방법 2*/
 /* The Modal (background) */
 .modal {
@@ -280,11 +198,31 @@
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("/memopad.png");
+  background-size: cover;
+  max-width: 500px;
+  max-height: 500px;
+  min-height: 400px;
+  width: 80%;
+  height: 50%;
+  /* 초기에 약간 아래에 배치 */
+  transform: translate(-50%, -40%);
+
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+}
+
+.memo-text {
+  position: absolute;
+  top: 20%;
+  height: 65%;
+  margin: 0 30px 0 30px;
+  font-size: 22px;
+  overflow: auto;
 }
 
 /* The Close Button */
@@ -300,4 +238,7 @@
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+.msgimg {
+  width: 20px;
 }

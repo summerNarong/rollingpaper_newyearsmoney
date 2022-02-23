@@ -44,7 +44,9 @@
               <div class="item-price">
                 <text>{{item.Image.price}}</text>
               </div>
-              <button class="myBtn_multi">Open Modal</button>
+              <text class="myBtn_multi item-memo"
+                ><img class="msgimg" src="/msg.png" />{{item.textmsg}}</text
+              >
               <div
                 class="number"
                 style="display: none"
@@ -74,7 +76,9 @@
               <div class="item-price">
                 <text>{{item.Image.price}}</text>
               </div>
-              <button class="myBtn_multi">Open Modal</button>
+              <text class="myBtn_multi item-memo"
+                ><img class="msgimg" src="/msg.png" /> {{item.textmsg}}</text
+              >
               <div
                 class="number"
                 style="display: none"
@@ -97,7 +101,9 @@
                 <text>{{item.Image.price}}</text>
               </div>
 
-              <button class="myBtn_multi">Open Modal</button>
+              <text class="myBtn_multi item-memo"
+                ><img class="msgimg" src="/msg.png" />{{item.textmsg}}</text
+              >
               <div
                 class="number"
                 style="display: none"
@@ -144,44 +150,51 @@
 
 <script>
   function copytext() {
-    const t = document.createElement('textarea');
+    const t = document.createElement("textarea");
     document.body.appendChild(t);
     url = window.document.location.href;
     t.value = url;
     t.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(t);
-    alert('복사되었습니다.');
+    alert("복사되었습니다.");
   }
 </script>
 
 <script>
-  var modal_btn_multi = document.getElementsByClassName('myBtn_multi');
+  var modal_btn_multi = document.getElementsByClassName("myBtn_multi");
 
   // Get the <span> element that closes the modal
-  var number_multi = document.getElementsByClassName('number');
+  var number_multi = document.getElementsByClassName("number");
 
   // When the user clicks the button, open the modal
   function setDataIndex() {
     for (i = 0; i < modal_btn_multi.length; i++) {
-      modal_btn_multi[i].setAttribute('data-index', i);
-      number_multi[i].setAttribute('data-index', i);
+      modal_btn_multi[i].setAttribute("data-index", i);
+      number_multi[i].setAttribute("data-index", i);
     }
   }
 
   for (i = 0; i < modal_btn_multi.length; i++) {
     modal_btn_multi[i].onclick = function () {
-      var ElementIndex = this.getAttribute('data-index');
+      var ElementIndex = this.getAttribute("data-index");
       //modalparent[ElementIndex].style.display = 'block';
-      document.getElementsByClassName('modal')[0].style.display = 'block';
-      let str = number_multi[ElementIndex].getAttribute('value');
 
-      let temp = document.createElement('div');
-      temp.setAttribute('id', 'closesoon');
-      temp.innerHTML = str;
+      if ("{{user}}" && "{{user.ref}}" == "{{hostuser.ref}}") {
+        document.getElementsByClassName("modal")[0].style.display = "block";
+        let str = number_multi[ElementIndex].getAttribute("value");
 
-      let modalparent = document.getElementsByClassName('modal-content')[0];
-      modalparent.appendChild(temp);
+        let temp = document.createElement("div");
+        temp.setAttribute("id", "closesoon");
+        temp.setAttribute("class", "memo-text");
+
+        temp.innerHTML = str;
+
+        let modalparent = document.getElementsByClassName("modal-content")[0];
+        modalparent.appendChild(temp);
+      } else {
+        alert("본인의 메세지만 확인할 수 있습니다!");
+      }
     };
   }
 
@@ -190,27 +203,27 @@
   };
 
   window.onclick = function (event) {
-    if (event.target === document.getElementsByClassName('modal')[0]) {
+    if (event.target === document.getElementsByClassName("modal")[0]) {
       close();
     }
   };
 
   function close() {
-    document.getElementsByClassName('modal')[0].style.display = 'none';
+    document.getElementsByClassName("modal")[0].style.display = "none";
 
-    let modalparent = document.getElementsByClassName('modal-content')[0];
-    modalparent.removeChild(document.getElementById('closesoon'));
+    let modalparent = document.getElementsByClassName("modal-content")[0];
+    modalparent.removeChild(document.getElementById("closesoon"));
   }
-  document.querySelector('.close').addEventListener('click', close);
+  document.querySelector(".close").addEventListener("click", close);
 </script>
 <script></script>
 
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script>
-  const swiper = new Swiper('.mySwiper', {
+  const swiper = new Swiper(".mySwiper", {
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
     centeredSlides: true,
   });
