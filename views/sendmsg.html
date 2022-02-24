@@ -1,4 +1,4 @@
-{% extends 'layout.html'} {% block content %} {% include "header.html" %}
+{% extends 'layout.html' %} {% block content %}
 <!--
     이미지선택
     편지쓰는곳(보내는사람, 누구에게, 어쩌구저쩌구)
@@ -6,59 +6,120 @@
 
     yes24 : <li> 로 하나씩 감싸고, 선택하면 <label onclick="chkGiftOpt(this);">  -> 누르면 class="chked"로 바뀜(아마 이걸로 테두리선을 주는듯)
 -->
-
-<style>
-  .img_choice_off {
-    height: 200px;
-    width: 200px;
-    border: 0px;
-  }
-  .img_choice_on {
-    height: 200px;
-    width: 200px;
-    border: 36px solid orange;
-  }
-  .textarea {
-    width: 500px;
-    height: 100px;
-    resize: none;
-  }
-</style>
-
+<div class="sendstep">1. 입금하실 금액을 선택해주세요.</div>
 <form action="{{url}}" method="post">
-  <ul calss="ul_supplement">
-    <li class="li_supitem">
-      <input
-        id="10"
-        name="money"
-        type="radio"
-        value="1"
-        onclick="imageSelected()"
-      />
-      <label for="10">
-        <img src="/10.png" class="img_choice_off" />
-      </label>
-    </li>
-    <li class="li_supitem">
-      <input
-        id="100"
-        name="money"
-        type="radio"
-        value="2"
-        onclick="imageSelected()"
-      />
-      <label for="100">
-        <img src="/100.jpg" class="img_choice_off" />
-      </label>
-    </li>
+  <ul class="ul_supplement">
+    <div class="moneylist">
+      <li class="li_supitem">
+        <input
+          class="money"
+          id="10"
+          name="money"
+          type="radio"
+          value="1"
+          onclick="imageSelected()"
+          required
+        />
+        <label for="10">
+          <img src="/10.png" class="img_choice_off" />
+        </label>
+      </li>
+      <li class="li_supitem">
+        <input
+          class="money"
+          id="100"
+          name="money"
+          type="radio"
+          value="2"
+          onclick="imageSelected()"
+        />
+        <label for="100">
+          <img src="/100.png" class="img_choice_off" />
+        </label>
+      </li>
+      <li class="li_supitem">
+        <input
+          class="money"
+          id="500"
+          name="money"
+          type="radio"
+          value="3"
+          onclick="imageSelected()"
+        />
+        <label for="500">
+          <img src="/500.png" class="img_choice_off" />
+        </label>
+      </li>
+    </div>
+    <div class="moneylist">
+      <li class="li_supitem">
+        <input
+          class="money"
+          id="10,000"
+          name="money"
+          type="radio"
+          value="4"
+          onclick="imageSelected()"
+        />
+        <label for="10,000">
+          <img src="/10,000.png" class="img_choice_off" />
+        </label>
+      </li>
+      <li class="li_supitem">
+        <input
+          id="50,000"
+          class="money"
+          name="money"
+          type="radio"
+          value="5"
+          onclick="imageSelected()"
+        />
+        <label for="50,000">
+          <img src="/50,000.png" class="img_choice_off" />
+        </label>
+      </li>
+      <li class="li_supitem">
+        <input
+          class="money"
+          id="100,000"
+          name="money"
+          type="radio"
+          value="6"
+          onclick="imageSelected()"
+        />
+        <label for="100,000">
+          <img src="/100,000.png" class="img_choice_off" />
+        </label>
+      </li>
+    </div>
   </ul>
 
-  <textarea id="msg" name="content" maxlength="500" class="textarea"></textarea>
+  <div class="sendstep">2. 이름과 메세지를 남겨주세요.</div>
+
+  <div class="sendmsgback">
+    보내는 사람 :
+    <input
+      class="sendername"
+      type="text"
+      id="sender"
+      name="sendername"
+      maxlength="8"
+      required
+    />
+
+    <textarea
+      class="sendmsgcontent"
+      id="msg"
+      name="content"
+      maxlength="500"
+      class="textarea"
+      required
+    ></textarea>
+  </div>
   <br />
-  보내는 사람 :
-  <input type="text" id="sender" name="sendername" maxlength="45" required />
-  <br />
-  <button id="msg-btn" type="submit" class="btn">메시지 보내기</button>
+  <button class="button-56" type="submit" role="button">
+    <text> 입금하기 </text>
+  </button>
 </form>
 
 {% endblock %} {% block script %}

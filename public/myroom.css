@@ -130,8 +130,7 @@
   box-sizing: border-box;
   color: #000000;
   cursor: pointer;
-  display: flex;
-  font-family: "Yeon Sung", cursive;
+  font-family: 'Yeon Sung', cursive;
   font-size: 20px;
   height: 48px;
   justify-content: center;
@@ -144,12 +143,13 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin-bottom: 20px;
 }
 
 .button-56:after {
   background-color: #86826b;
   border-radius: 8px;
-  content: "";
+  content: '';
   display: block;
   height: 48px;
   left: 0;
@@ -202,7 +202,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url("/memopad.png");
+  background-image: url('/memopad.png');
   background-size: cover;
   max-width: 500px;
   max-height: 500px;
