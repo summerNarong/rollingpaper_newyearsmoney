@@ -131,7 +131,7 @@
   </div>
 </div>
 
-{% if user and user.ref %}
+{% if user and user.ref == hostuser.ref %}
 <a style="cursor: pointer" onclick="copytext()">
   <button class="button-56" role="button">
     <text> 내 계좌번호 복사하기 </text>

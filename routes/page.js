@@ -51,7 +51,6 @@ router.get('/myroom', async (req, res, next) => {
           },
         ],
       });
-      console.log(msgs[0].Image.price);
       var date = dayjs(host.createdAt);
       date = date.format('YYYY년 MM월 DD일');
 
